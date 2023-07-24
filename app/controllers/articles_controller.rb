@@ -2,6 +2,8 @@ class ArticlesController < ApplicationController
   
   # index，show，new，edit，create，update and destroy
 
+  http_basic_authenticate_with name: "admin", password: "admin", except: [:index, :show]
+
   def index
     @articles = Article.all
   end
@@ -11,13 +13,38 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    @article = Article.new
+  end
+
+  def edit
+    @article = Article.find(params[:id])
   end
 
   def create
     @article = Article.new(articles_params)
 
-    @article.save
-    redirect_to @article
+    if @article.save
+      redirect_to @article
+    else
+      render :new, status: 422
+    end
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(articles_params)
+      redirect_to @article
+    else
+      render :edit, status: 422
+    end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+   
+    redirect_to articles_path
   end
 
   private
