@@ -18,12 +18,12 @@ class UserTest < ActiveSupport::TestCase
   end
   # 使用不合法的password_digest
   test "invalid: user with invalid password_digest" do
-    user = User.new(email: test1@test.cn, password_digest: '', role: 1)
+    user = User.new(email: 'test1@test.cn', password_digest: '', role: 1)
     assert_not user.valid?
   end
   # 使用不合法的role
   test "invalid: user with invalid role" do
-    user = User.new(email: test2@test.cn, password_digest: '123456', role: 5)
+    user = User.new(email: 'test2@test.cn', password_digest: '123456', role: 5)
     assert_not user.valid?
   end
   # 使用合法的password
