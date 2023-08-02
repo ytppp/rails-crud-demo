@@ -1,4 +1,4 @@
-A rails study demo about article CRUD
+A demo of studying CRUD operations in rails
 
 ## how to use
 
