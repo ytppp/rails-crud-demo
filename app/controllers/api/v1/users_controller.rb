@@ -12,12 +12,10 @@ class Api::V1::UsersController < ApplicationController
       param && param&.to_i > 0 ? param&.to_i : default_no.to_i
     end
 
-    # api/v1/users?per_page=10
     def set_per_page
       @per_page = _to_i(params[:per_page], 10)
     end
 
-    # api/v1/users?page=1
     def set_page
       @page = _to_i(params[:page], 1)
       @page = set_per_page * (@page - 1)
