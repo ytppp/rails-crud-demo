@@ -7,6 +7,10 @@ class Api::V1::UsersController < ApplicationController
     render json: {error_code:0, data:@users, message:'ok'}, status: 200
   end
 
+  def show
+    render json: {error_code:0, data: @user, message: 'ok'}, status: 200
+  end
+
   private
     def _to_i(param, default_no = 1)
       param && param&.to_i > 0 ? param&.to_i : default_no.to_i
@@ -19,5 +23,10 @@ class Api::V1::UsersController < ApplicationController
     def set_page
       @page = _to_i(params[:page], 1)
       @page = set_per_page * (@page - 1)
+    end
+
+    def set_user
+      @user = User.find_by_id params[:id].to_i
+      @user = @user || {}
     end
 end
