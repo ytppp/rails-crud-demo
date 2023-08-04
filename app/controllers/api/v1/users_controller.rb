@@ -11,6 +11,15 @@ class Api::V1::UsersController < ApplicationController
     render json: {error_code:0, data: @user, message: 'ok'}, status: 200
   end
 
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      render json: {error_code:0, data:@user, message:'ok'}, status: 201
+    else
+      render json: {error_code:0, data:@user.errors}, status: 201
+    end
+  end
+
   private
     def _to_i(param, default_no = 1)
       param && param&.to_i > 0 ? param&.to_i : default_no.to_i
@@ -28,5 +37,9 @@ class Api::V1::UsersController < ApplicationController
     def set_user
       @user = User.find_by_id params[:id].to_i
       @user = @user || {}
+    end
+
+    def user_params
+      params.require(:user).permit(:name, :email, :password)
     end
 end
