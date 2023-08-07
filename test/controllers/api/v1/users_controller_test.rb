@@ -22,4 +22,15 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response 201
   end
+  test "update_success: should update user" do
+    put api_v1_user_path(@user), params: {user:{email: 'test@test.com', password: '123456'}}, as: :json
+    assert_response 202
+  end
+  test "destroy_success: should destroy user" do
+    # 验证某个值变化了
+    assert_difference('User.count', -1) do
+      delete api_v1_user_path(@user), as: :json
+    end
+    assert_response 204
+  end
 end
