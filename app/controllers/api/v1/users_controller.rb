@@ -4,7 +4,7 @@ class Api::V1::UsersController < ApplicationController
   before_action :set_user, only: [:show, :update, :destroy]
 
   def index
-    @users  = User.offset(@page).limit(@per_page)
+    @users  = User.select(User.attribute_names - ["password_digest"]).offset(@page).limit(@per_page)
     render json: {error_code:0, data:@users, message:'ok'}, status: 200
   end
 
@@ -36,7 +36,7 @@ class Api::V1::UsersController < ApplicationController
 
   private
     def _to_i(param, default_no = 1)
-      param && param&.to_i > 0 ? param&.to_i : default_no.to_i
+      param && param.to_i > 0 ? param.to_i : default_no.to_i
     end
 
     def set_per_page
@@ -49,7 +49,9 @@ class Api::V1::UsersController < ApplicationController
     end
 
     def set_user
-      @user = User.find_by_id params[:id].to_i
+      # @user = User.find_by_id(params[:id].to_i)
+      # @user = @user.attributes.except("password_digest")
+      @user = User.select(User.attribute_names - ["password_digest"]).find_by_id(params[:id].to_i)
     end
 
     def user_params
