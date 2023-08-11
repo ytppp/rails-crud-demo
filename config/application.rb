@@ -19,7 +19,7 @@ module App
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    config.autoload_paths += Rails.root.join("lib")
+    config.autoload_paths << Rails.root.join("lib")
 
     # Use redis cache by default
     config.cache_store = :redis_cache_store, {
