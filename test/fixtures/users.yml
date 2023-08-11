@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
+# 角色：0-管理员 1-普通用户 2-店家
+
 one:
   email: 'user1@demo.com'
   password_digest: <%= BCrypt::Password.create('123456') %>
-  role: 1
+  role: 0
 
 two:
   email: 'user2@demo.com'

@@ -2,6 +2,8 @@ class Api::V1::UsersController < ApplicationController
   before_action :set_per_page, only: [:index]
   before_action :set_page, only: [:index]
   before_action :set_user, only: [:show, :update, :destroy]
+  before_action :check_admin, only: [:index, :destroy]
+  before_action :check_admin_or_owner, only: [:update]
 
   def index
     @users  = User.select(User.attribute_names - ["password_digest"]).offset(@page).limit(@per_page)
@@ -52,6 +54,22 @@ class Api::V1::UsersController < ApplicationController
       # @user = User.find_by_id(params[:id].to_i)
       # @user = @user.attributes.except("password_digest")
       @user = User.select(User.attribute_names - ["password_digest"]).find_by_id(params[:id].to_i)
+    end
+
+    def is_admin?
+      current_user&.role == 0
+    end
+
+    def is_owner?
+      @user.id == current_user&.id
+    end
+    
+    def check_admin
+      head 403 unless is_admin?
+    end
+
+    def check_admin_or_owner
+      head 403 unless is_admin? || is_owner?
     end
 
     def user_params
