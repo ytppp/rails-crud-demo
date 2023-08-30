@@ -11,7 +11,7 @@ $ docker compose run --rm web bin/setup
 Start dev server:
 
 ```
-$ docker compose up
+$ docker compose up # If you need to rebuild, or first build, please use: docker compose up --build
 ```
 
 Open console(open another terminal):
