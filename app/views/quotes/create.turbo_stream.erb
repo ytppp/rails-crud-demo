@@ -1,0 +1,4 @@
+<% # 告诉Turbo把app/views/quotes/_quote.html.erb放到id为quotes的frame前面，这里可以看到我们可以直接传参关联。%>
+<%= turbo_stream.prepend "quotes", @quote %>
+<% # 告诉Turbo去更新id为new_quote的frame，变成空内容。%>
+<%= turbo_stream.update Quote.new, "" %>
