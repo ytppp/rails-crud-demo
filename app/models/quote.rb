@@ -9,4 +9,3 @@ class Quote < ApplicationRecord
   # 上面等价于下面
   broadcasts_to ->(quote) { "quotes" }, inserts_by: :prepend
 end
-Quote.first.update!(name: "Update from console")
