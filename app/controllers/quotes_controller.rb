@@ -2,7 +2,6 @@ class QuotesController < TurboController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @quotes = Quotes.ordered
     @quotes = current_company.quotes.ordered
   end
 
@@ -14,7 +13,6 @@ class QuotesController < TurboController
   end
 
   def create
-    # @quote = Quote.new(quote_params)
     @quote = current_company.quotes.build(quote_params)
 
     if @quote.save
@@ -48,7 +46,6 @@ class QuotesController < TurboController
 
   private
     def set_quote
-      # @quote = Quote.find(params[:id])
       @quote = current_company.quotes.find(params[:id])
     end
 
