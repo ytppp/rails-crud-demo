@@ -64,8 +64,6 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-
-  gem "brakeman"
 end
 
 group :test do
@@ -78,3 +76,6 @@ end
 gem "cssbundling-rails", "~> 1.2"
 
 gem "jsbundling-rails", "~> 1.1"
+
+# https://github.com/heartcombo/devise
+gem "devise", "~> 4.8.1"
