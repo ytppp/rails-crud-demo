@@ -4,7 +4,5 @@
 
   <% if devise_user_signed_in? %>
     <%= link_to "View quotes", quotes_path, class: "btn btn--dark" %>
-  <% else %>
-    <%= link_to "Sign in", new_devise_user_session_path, class: "btn btn--dark" %>
   <% end %>
 </main>

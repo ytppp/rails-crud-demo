@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Authuser
   protect_from_forgery unless: -> { request.format.json? }
-  before_action :authenticate_user!, unless: :devise_controller?
+  before_action :authenticate_devise_user!, unless: :devise_controller?
 
   helper_method :current_company
 
