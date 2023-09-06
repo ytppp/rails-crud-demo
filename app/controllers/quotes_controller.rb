@@ -1,4 +1,4 @@
-class QuotesController < ApplicationController
+class QuotesController < TurboController
   before_action :set_quote, only: [:show, :edit, :update, :destroy]
 
   def index
