@@ -1,4 +1,4 @@
-class Api::V1::UsersController < ApplicationController
+class Api::V1::UsersController < ApiController
   before_action :set_per_page, only: [:index]
   before_action :set_page, only: [:index]
   before_action :set_user, only: [:show, :update, :destroy]
