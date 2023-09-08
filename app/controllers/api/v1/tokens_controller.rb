@@ -8,8 +8,8 @@ class Api::V1::TokensController < ApiController
 
     payload = {user_id: @user.id}
     exp_time = 24.hours.from_now
-    if (JsonWebToken rescue nil) 
-      token = JsonWebToken.encode(payload, exp_time) 
+    if (JsonWebToken rescue nil)
+      token = JsonWebToken.encode(payload, exp_time)
       render json: {error_code:0, data:{token:token, exp_time:exp_time}, message:"ok"}, status: 201
       return
     else
