@@ -2,21 +2,21 @@ A demo of studying CRUD operations in rails
 
 ## how to use
 
-Open database:
+1. Open database:
 
 ```
 $ docker compose up
 ```
 
-Build and install dependency:
+2. Build and install dependency:
 
 ```
-$ bundle install --path vendor/bundle # or bundle config set --local path vendor/bundle 再 bundle install, 将 gem 安装在项目目录的vendor/bundle下
+$ bundle config set --local path vendor/bundle 将 gem 安装在项目目录下
 $ bin/setup # 下载 gem, create, migrate, seed 数据库
-$ bin/rails assets:precompile # 下载 javascript 依赖, 编译 assets
+$ bin/rails assets:precompile # 下载 assets 依赖, 编译 assets
 ```
 
-Start dev server:
+3. Start dev server:
 
 ```
 $ bin/dev # bin/rails server -b 0.0.0.0 不能实时编译 assets
