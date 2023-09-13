@@ -1,4 +1,4 @@
-A demo of studying CRUD operations in rails
+A rails study demo about rails CRUD, turbo and API
 
 ## how to use
 
