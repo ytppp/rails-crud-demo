@@ -2,3 +2,4 @@
 <%= turbo_stream.prepend "quotes", @quote %>
 <% # 告诉Turbo去更新id为new_quote的frame, 变成空内容。%>
 <%= turbo_stream.update Quote.new, "" %>
+<%= render_turbo_stream_flash_messages %>

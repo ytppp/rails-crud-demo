@@ -2,6 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 
-// 不工作？
+// 禁用 turbo
 import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
