@@ -63,7 +63,7 @@ class Api::V1::UsersController < ApiController
     def is_owner?
       @user.id == current_user&.id
     end
-    
+
     def check_admin
       head 403 unless is_admin?
     end
