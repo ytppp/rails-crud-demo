@@ -3,5 +3,5 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 
 // 禁用 turbo
-import { Turbo } from "@hotwired/turbo-rails"
-Turbo.session.drive = false
+// import { Turbo } from "@hotwired/turbo-rails"
+// Turbo.session.drive = false
