@@ -11,3 +11,28 @@ two:
   email: 'user2@demo.com'
   password_digest: <%= BCrypt::Password.create('123456') %>
   role: 1
+
+three:
+  email: 'user3@demo.com'
+  password_digest: <%= BCrypt::Password.create('123456') %>
+  role: 2
+
+four:
+  email: 'user4@demo.com'
+  password_digest: <%= BCrypt::Password.create('123456') %>
+  role: 1
+
+five:
+  email: 'user5@demo.com'
+  password_digest: <%= BCrypt::Password.create('123456') %>
+  role: 1
+
+six:
+  email: 'user6@demo.com'
+  password_digest: <%= BCrypt::Password.create('123456') %>
+  role: 1
+
+seven:
+  email: 'user7@demo.com'
+  password_digest: <%= BCrypt::Password.create('123456') %>
+  role: 1

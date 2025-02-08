@@ -8,6 +8,6 @@ class JsonWebToken
 
   def self.decode(token)
     decoded = JWT.decode(token, SECRET_KEY).first
-    HashWithIndifferentAccess.new decoded
+    HashWithIndifferentAccess.new decoded # 可以使针对hash指定访问使用的key允许使用字符串和符号
   end
 end
