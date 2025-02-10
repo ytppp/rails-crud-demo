@@ -1,4 +1,4 @@
-A demo of studying rails
+A rails study demo about rails CRUD, turbo and API
 
 ## how to use in dev
 
