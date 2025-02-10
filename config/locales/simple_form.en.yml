@@ -1,0 +1,14 @@
+en:
+  simple_form:
+    placeholders: # 文本提示
+      quote:
+        name: Name of your quote
+    labels:  # 标签提示
+      quote:
+        name: Name
+
+  helpers:
+    submit: # 按钮文本
+      quote:
+        create: Create quote # 如果为新的数据，显示创建
+        update: Update quote # 如果为老的数据，显示修改

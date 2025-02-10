@@ -1,0 +1,5 @@
+<% # 把app/views/quotes/_quote.html.erb放到id为quotes的frame前面 %>
+<%= turbo_stream.prepend "quotes", @quote %>
+<% # 更新id为new_quote的frame, 变成空内容。%>
+<%= turbo_stream.update Quote.new, "" %>
+<%= render_turbo_stream_flash_messages %>
