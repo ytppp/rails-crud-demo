@@ -1,4 +1,4 @@
-class ApiController < ApplicationController
+class ApiController < ActionController::API
   include Authuser
-  protect_from_forgery unless: -> { request.format.json? }
+  include Paginable
 end

@@ -5,13 +5,13 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     @user = users(:one)
     @user2 = users(:two)
   end
-  test "index_success: should show users" do
+  test "index_success: show users" do
     get api_v1_users_path,
       headers: { Authorization: JsonWebToken.encode(user_id: @user.id) },
       as: :json
     assert_response 200
   end
-  test "index_forbidden: should forbiden show users cause not admin" do
+  test "index_forbidden: forbiden show users not admin privileges" do
     get api_v1_users_path,
       headers: { Authorization: JsonWebToken.encode(user_id: @user2.id) },
       as: :json
@@ -38,8 +38,8 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
       as: :json
     assert_response 202
   end
-  test "update_forbidden: should forbiden update user cause not admin" do
-    put api_v1_user_path(@user), 
+  test "update_forbidden: should forbiden update user not admin privileges" do
+    put api_v1_user_path(@user),
       params: {user:{email: 'test1@test.com', password: '123456'}},
       headers: { Authorization: JsonWebToken.encode(user_id: @user2.id) },
       as: :json
@@ -55,8 +55,8 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     end
     assert_response 204
   end
-  test "destroy_forbidden: should forbiden destroy_ user cause not admin" do
-    delete api_v1_user_path(@user), 
+  test "destroy_forbidden: should forbiden destroy user not admin privileges" do
+    delete api_v1_user_path(@user),
     headers: { Authorization: JsonWebToken.encode(user_id: @user2.id) },
     as: :json
 
