@@ -1,4 +1,4 @@
-class Api::V1::TokensController < ApiController
+class Api::V1::SessionsController < ApiController
   def create
     @user = User.find_by_email(user_params[:email])
     unless @user&.authenticate(user_params[:password])

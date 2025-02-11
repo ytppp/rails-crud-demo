@@ -1,6 +1,6 @@
 require "test_helper"
 
-class Api::V1::TokensControllerTest < ActionDispatch::IntegrationTest
+class Api::V1::SessionsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:one)
   end
