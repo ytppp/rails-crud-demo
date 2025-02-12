@@ -10,6 +10,13 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
       headers: { Authorization: JsonWebToken.encode(user_id: @user.id) },
       as: :json
     assert_response 200
+    json_res = JSON.parse(response.body, symbolize_names: true)
+    # dig可以在hash嵌套中检测元素是否存在
+    assert_not_nil json_res.dig(:links, :first)
+    assert_not_nil json_res.dig(:links, :last)
+    assert_not_nil json_res.dig(:links, :prev)
+    assert_not_nil json_res.dig(:links, :next)
+
   end
   test "index_forbidden: forbiden show users not admin privileges" do
     get api_v1_users_path,
@@ -23,7 +30,7 @@ class Api::V1::UsersControllerTest < ActionDispatch::IntegrationTest
     # 验证状态码
     assert_response 200
     # 验证返回数据
-    assert_equal @user.email, json_response['data']['email']
+    assert_equal @user.email, json_response['data']['attributes']['email']
   end
   test "create_success: should create user" do
     assert_difference('User.count', 1) do

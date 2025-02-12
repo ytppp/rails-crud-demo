@@ -33,5 +33,7 @@ jobs:
         run: bin/rails db:prepare
       - name: Asset precompile
         run: bin/rails assets:precompile
+      - name: Set test env
+        run: bin/rails db:migrate RAILS_ENV=test
       - name: Run test
         run: bin/rails test

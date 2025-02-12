@@ -81,3 +81,5 @@ gem "jsbundling-rails", "~> 1.1"
 gem "devise", "~> 4.8.1"
 
 gem 'jsonapi-serializer'
+
+gem 'will_paginate'
