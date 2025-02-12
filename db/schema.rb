@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2025_02_07_093013) do
+ActiveRecord::Schema[7.0].define(version: 2025_02_12_031953) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,18 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_07_093013) do
     t.index ["reset_password_token"], name: "index_devise_users_on_reset_password_token", unique: true
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.float "price", default: 0.0, null: false
+    t.integer "published", default: 1, null: false
+    t.bigint "shop_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id", "title"], name: "index_products_on_shop_id_and_title"
+    t.index ["shop_id"], name: "index_products_on_shop_id"
+    t.index ["title"], name: "index_products_on_title"
+  end
+
   create_table "quotes", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -80,6 +92,7 @@ ActiveRecord::Schema[7.0].define(version: 2025_02_07_093013) do
 
   add_foreign_key "comments", "articles"
   add_foreign_key "devise_users", "companies"
+  add_foreign_key "products", "shops"
   add_foreign_key "quotes", "companies"
   add_foreign_key "shops", "users"
 end
