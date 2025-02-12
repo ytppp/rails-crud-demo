@@ -9,6 +9,9 @@ class Shop < ApplicationRecord
   validates :user_id, uniqueness: true
   validate  :user_can_not_be_admin, on: :create
 
+  has_many :products, dependent: :destroy
+
+  private
   def user_can_not_be_admin
     if user.role == 0
       errors.add(:user_id, "can't be admin")
