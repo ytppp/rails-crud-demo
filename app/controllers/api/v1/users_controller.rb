@@ -37,36 +37,36 @@ class Api::V1::UsersController < ApiController
   end
 
   private
-    def set_user
-      # @user = User.find_by_id(params[:id].to_i)
-      # @user = @user.attributes.except("password_digest")
-      @user = User.find_by_id(params[:id].to_i)
-    end
+  def set_user
+    # @user = User.find_by_id(params[:id].to_i)
+    # @user = @user.attributes.except("password_digest")
+    @user = User.find_by_id(params[:id].to_i)
+  end
 
-    def is_admin?
-      current_user&.role == 0
-    end
+  def is_admin?
+    current_user&.role == 0
+  end
 
-    def is_owner?
-      @user.id == current_user&.id
-    end
+  def is_owner?
+    @user.id == current_user&.id
+  end
 
-    def check_admin
-      head 403 unless is_admin?
-    end
+  def check_admin
+    head 403 unless is_admin?
+  end
 
-    def check_admin_or_owner
-      head 403 unless is_admin? || is_owner?
-    end
+  def check_admin_or_owner
+    head 403 unless is_admin? || is_owner?
+  end
 
-    def user_params
-      params.require(:user).permit(:email, :password)
-    end
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
 
-    def serializer_user(user, error_code = 0, message = 'ok', options = {})
-      user_hash = UserSerializer.new(user, options).serializable_hash
-      user_hash['error_code'] = error_code
-      user_hash['message'] = message
-      user_hash
-    end
+  def serializer_user(user, error_code = 0, message = 'ok', options = {})
+    user_hash = UserSerializer.new(user, options).serializable_hash
+    user_hash['error_code'] = error_code
+    user_hash['message'] = message
+    user_hash
+  end
 end
